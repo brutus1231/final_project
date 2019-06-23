@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("pass")
                 .defaultSuccessUrl("/index", true)
-                .failureUrl("/error");
+                ;
         // .failureHandler(authenticationFailureHandler())
 
         http.csrf().disable()
