@@ -8,9 +8,14 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -18,6 +23,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("{noop}user").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("{noop}admin").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("dba").password("{noop}dba").roles("DBA");
+
+        auth.jdbcAuthentication()
+                .usersByUsernameQuery("SELECT u.username, u.password_hash,1 FROM user u WHERE u.username=?")
+                .authoritiesByUsernameQuery("SELECT u.username, r.role_name, 1 " +
+                        "FROM user u " +
+                        "INNER JOIN user_role ur ON ur.user_id = u.id " +
+                        "INNER JOIN role r ON r.id = ur.roles_id " +
+                        "WHERE u.username=?")
+                .dataSource(dataSource);
+
     }
 
     @Override
