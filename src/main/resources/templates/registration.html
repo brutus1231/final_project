@@ -17,13 +17,21 @@
 <div class="wrapper">
 
     <div id="formContent">
-        <div class="loginTitle" >Rejestracja</div>
-        <form action="/registerUser" method="post">
-            <input type="text" id="username" class="second" name="username" placeholder="email">
-            <input type="text" id="pass" class="third" name="pass" placeholder="password">
-            <input type="text" id="pass2" class="fourth" name="pass" placeholder="confirm password">
+        <div class="registrationTitle" >Rejestracja</div>
+<!--        <form action="/registerUser" method="post">
+            <input type="text" id="username" class="second" name="user.username" placeholder="email">
+            <input type="text" id="pass" class="third" name="user.password" placeholder="password">
+            <input type="text" id="pass2" class="fourth" name="user.confirmedPassword" placeholder="confirm password">
+            <input type="submit" value="Zapisz" name="saveButton">
+        </form>-->
+
+        <form th:action="@{/registerUser}" th:object="${user}" method="post">
+            <input id="username" type="text" th:field="*{username}" class="second"/>
+            <input id="password" type="text" th:field="*{password}" class="third"/>
+            <input id="confirmedPassword" type="text" th:field="*{confirmedPassword}" class="fourth"/>
             <input type="submit" value="Zapisz" name="saveButton">
         </form>
+
     </div>
 </div>
 
