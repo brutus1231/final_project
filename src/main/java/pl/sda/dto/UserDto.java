@@ -1,8 +1,6 @@
 package pl.sda.dto;
 
-import java.io.Serializable;
-
-public class UserDto implements Serializable {
+public class UserDto {
 
     private String username;
     private String password;
