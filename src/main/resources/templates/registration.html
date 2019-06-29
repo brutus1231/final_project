@@ -10,20 +10,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css\login.css" type="text/css" />
-
+    <div th:replace="header :: header-css"/>
 </head>
-<body>
 
+<body>
+<div th:replace="header :: header"/>
 <div class="wrapper">
 
     <div id="formContent">
         <div class="registrationTitle" >Rejestracja</div>
 
         <form th:action="@{/register}" th:object="${user}" method="post">
-            <input id="username" type="text" th:field="*{username}" class="second" placeholder="email"/>
-            <input id="password" type="text" th:field="*{password}" class="third" placeholder="password"/>
-            <input id="confirmedPassword" type="text" th:field="*{confirmedPassword}" class="fourth" placeholder="confirm password"/>
+
+            <p class="error" th:text="${userAlreadyExists}"></p>
+            <input id="username" type="text" th:field="*{username}" class="first" placeholder="email"/>
+            <div class="error" th:errors="*{username}"></div>
+            <input id="password" type="text" th:field="*{password}" class="second" placeholder="password"/>
+            <div class="error" th:errors="*{password}"></div>
+            <input id="confirmedPassword" type="text" th:field="*{confirmedPassword}" class="third" placeholder="confirm password"/>
+            <div class="fourth">
+            <input type="button" value="Powrót" name="backButton"
+                   onClick="javascript:window.location.href='/login'" class="shortButton" >
             <input type="submit" value="Zapisz" name="saveButton">
+            </div>
         </form>
 
     </div>

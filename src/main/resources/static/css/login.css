@@ -50,8 +50,11 @@ a {
   border-radius: 0 0 10px 10px;
 }
 
+.shortButton {
+    padding-left:30px !important;
+    padding-right:30px !important;
+}
 /* FORM TYPOGRAPHY*/
-
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
   border: none;
@@ -242,4 +245,8 @@ h2{
 
 footer{
     margin-top:60px;
+}
+
+.error{
+    color: #FF0000;
 }
