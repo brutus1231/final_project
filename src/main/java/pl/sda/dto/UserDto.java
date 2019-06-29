@@ -1,7 +1,11 @@
 package pl.sda.dto;
 
-public class UserDto {
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
+public class UserDto implements Serializable {
+
+    //@Pattern(regexp = "^[\\w\\.]+@[\\w]+\\.[\\w]+(\\.[a-z]{2,3})?$", message = "Zły format adresu email")
     private String username;
     private String password;
     private String confirmedPassword;

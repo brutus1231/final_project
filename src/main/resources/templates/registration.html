@@ -18,17 +18,11 @@
 
     <div id="formContent">
         <div class="registrationTitle" >Rejestracja</div>
-<!--        <form action="/registerUser" method="post">
-            <input type="text" id="username" class="second" name="user.username" placeholder="email">
-            <input type="text" id="pass" class="third" name="user.password" placeholder="password">
-            <input type="text" id="pass2" class="fourth" name="user.confirmedPassword" placeholder="confirm password">
-            <input type="submit" value="Zapisz" name="saveButton">
-        </form>-->
 
-        <form th:action="@{/registerUser}" th:object="${user}" method="post">
-            <input id="username" type="text" th:field="*{username}" class="second"/>
-            <input id="password" type="text" th:field="*{password}" class="third"/>
-            <input id="confirmedPassword" type="text" th:field="*{confirmedPassword}" class="fourth"/>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <input id="username" type="text" th:field="*{username}" class="second" placeholder="email"/>
+            <input id="password" type="text" th:field="*{password}" class="third" placeholder="password"/>
+            <input id="confirmedPassword" type="text" th:field="*{confirmedPassword}" class="fourth" placeholder="confirm password"/>
             <input type="submit" value="Zapisz" name="saveButton">
         </form>
 
