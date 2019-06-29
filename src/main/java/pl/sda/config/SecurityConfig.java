@@ -25,8 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("dba").password("{noop}dba").roles("DBA");
 
         auth.jdbcAuthentication()
-                .usersByUsernameQuery("SELECT u.username, u.password_hash,1 FROM user u WHERE u.username=?")
-                .authoritiesByUsernameQuery("SELECT u.username, r.role_name, 1 " +
+                .usersByUsernameQuery("SELECT u.username, u.password,1 FROM user u WHERE u.username=?")
+                .authoritiesByUsernameQuery("SELECT u.username, r.name, 1 " +
                         "FROM user u " +
                         "INNER JOIN user_role ur ON ur.user_id = u.id " +
                         "INNER JOIN role r ON r.id = ur.roles_id " +
