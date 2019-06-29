@@ -11,19 +11,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css\login.css" type="text/css" />
 
-    <div th:replace="header :: header-css"/>
 </head>
 <body>
 
-<div th:replace="header :: header"/>
 <div class="wrapper">
 
     <div id="formContent">
-        <div class="loginTitle" >Login</div>
-        <form action="/appLogin" method="post">
+        <div class="loginTitle" >Rejestracja</div>
+        <form action="/registerUser" method="post">
             <input type="text" id="username" class="second" name="username" placeholder="email">
             <input type="text" id="pass" class="third" name="pass" placeholder="password">
-            <input type="submit" value="Log In">
+            <input type="text" id="pass2" class="fourth" name="pass" placeholder="confirm password">
+            <input type="submit" value="Zapisz" name="saveButton">
         </form>
     </div>
 </div>
