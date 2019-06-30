@@ -24,14 +24,16 @@
         <div class="form-group">
             <div class="error" th:errors="*{username}"></div>
             <label for="username">Email address</label>
-            <input type="email" class="form-control" id="username" th:field="*{username}" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="username" th:field="*{username}" aria-describedby="emailHelp"
                    placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">Your unique account login.</small>
         </div>
         <div class="form-group">
             <div class="error" th:errors="*{password}"></div>
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Password">
+            <input type="text" class="form-control" id="password" th:field="*{password}" placeholder="Password"
+                   aria-describedby="pass1">
+            <small id="pass1" class="form-text text-muted">Your unique account login.</small>
         </div>
         <div class="form-group">
             <div class="error" th:errors="*{confirmedPassword}"></div>
@@ -41,8 +43,8 @@
         </div>
         <div class="fourth">
             <input type="button" value="Powrót" name="backButton"
-                   onClick="javascript:window.location.href='/login'" class="shortButton" >
-            <input type="submit" value="Zapisz" name="saveButton">
+                   onClick="javascript:window.location.href='/login'" class="myButton shortButton" >
+            <input class = "mySubmitButton" type="submit" value="Zapisz" name="saveButton">
         </div>
     </form>
 </div>

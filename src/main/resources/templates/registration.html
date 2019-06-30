@@ -22,15 +22,17 @@
         <form th:action="@{/register}" th:object="${user}" method="post">
 
             <p class="error" th:text="${commonError}"></p>
-            <input id="username" type="text" th:field="*{username}" class="first" placeholder="email"/>
+            <input id="username" type="text" th:field="*{username}" class="myTextButton" placeholder="email"/>
             <div class="error" th:errors="*{username}"></div>
-            <input id="password" type="password" th:field="*{password}" class="second" placeholder="password"/>
+            <input id="password" type="password" th:field="*{password}" class="myPasswordButton"
+                   placeholder="password"/>
             <div class="error" th:errors="*{password}"></div>
-            <input id="confirmedPassword" type="password" th:field="*{confirmedPassword}" class="third" placeholder="confirm password"/>
-            <div class="fourth">
+            <input id="confirmedPassword" type="password" th:field="*{confirmedPassword}" class="myTextButton third"
+                   placeholder="confirm password"/>
+            <div>
             <input type="button" value="Powrót" name="backButton"
-                   onClick="javascript:window.location.href='/login'" class="shortButton" >
-            <input type="submit" value="Zapisz" name="saveButton">
+                   onClick="javascript:window.location.href='/login'" class="myButton shortButton" >
+            <input type="submit" value="Zapisz" name="mySubmitButton saveButton">
             </div>
         </form>
 

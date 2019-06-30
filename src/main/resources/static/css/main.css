@@ -55,7 +55,7 @@ a {
     padding-right:30px !important;
 }
 /* FORM TYPOGRAPHY*/
-input[type=button], input[type=submit], input[type=reset]  {
+.myButton, .mySubmitButton, .myResetButton  {
   background-color: #56baed;
   border: none;
   color: white;
@@ -77,11 +77,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset], input[type=password]:hover  {
+.myButton:hover, .mySubmitButton:hover, .myResetButton:hover  {
   background-color: #39ace7;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset], input[type=password]:active  {
+.myButton:active, .mySubmitButton:active, .myResetButton:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -89,11 +89,11 @@ input[type=button]:active, input[type=submit]:active, input[type=reset], input[t
   transform: scale(0.95);
 }
 
-input[type=text], input[type=password] {
+.myTextButton, .myPasswordButton {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 6px 12px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -110,12 +110,12 @@ input[type=text], input[type=password] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text], input[type=password]:focus {
+.myTextButton, .myPasswordButton:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text], input[type=password]:placeholder {
+.myTextButton, .myPasswordButton:placeholder {
   color: #cccccc;
 }
 
