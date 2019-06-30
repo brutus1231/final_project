@@ -11,6 +11,7 @@ import pl.sda.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserBoImpl {
@@ -33,5 +34,11 @@ public class UserBoImpl {
         user.setRoles(roles);
 
         userRepository.save(user);
+    }
+
+    public UserDto getUser(String username) {
+        User user = userRepository.findByUsername(username).get();
+        String password = encoder.encode(user.getPassword());
+        return new UserDto(user, password);
     }
 }

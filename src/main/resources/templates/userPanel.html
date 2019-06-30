@@ -35,8 +35,9 @@
     </div>
     <div class="form-group">
         <div class="error" th:errors="*{confirmedPassword}"></div>
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="confirmedPassword" th:field="*{confirmedPassword}" placeholder="Password">
+        <label for="password">Confirmed password</label>
+        <input type="password" class="form-control" id="confirmedPassword" th:field="*{confirmedPassword}"
+               placeholder="Confirmed password">
     </div>
     <div class="fourth">
         <input type="button" value="Powrót" name="backButton"

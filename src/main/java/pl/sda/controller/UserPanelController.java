@@ -1,6 +1,8 @@
 package pl.sda.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +26,16 @@ public class UserPanelController {
     private UserValidator validator;
 
     @GetMapping("/userPanel")
-    public String page(Model model) {
-        initModel(model);
+    public String page(@Valid @ModelAttribute(name = "user") UserDto user, Model model) {
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        model.addAttribute("user", userBo.getUser(username));
+
         return "userPanel";
     }
 
