@@ -22,7 +22,7 @@
 
         <form th:action="@{/register}" th:object="${user}" method="post">
 
-            <p class="error" th:text="${userAlreadyExists}"></p>
+            <p class="error" th:text="${commonError}"></p>
             <input id="username" type="text" th:field="*{username}" class="first" placeholder="email"/>
             <div class="error" th:errors="*{username}"></div>
             <input id="password" type="text" th:field="*{password}" class="second" placeholder="password"/>

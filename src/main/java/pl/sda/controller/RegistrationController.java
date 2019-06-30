@@ -16,8 +16,6 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
-    private static final String USER_EXISTS_MSG = "Użytkownik o takim loginie isnieje w systemie";
-
     @Autowired
     private UserBoImpl userBo;
 
@@ -31,10 +29,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@Valid @ModelAttribute UserDto user, BindingResult bindingResult, Model model) {
-        initModel(model);
-
-        if (bindingResult.hasErrors() || checkUserAlreadyExists(user, model)) {
+    public String saveUser(@Valid @ModelAttribute(name = "user") UserDto user, BindingResult bindingResult,
+                           Model model) {
+        if (bindingResult.hasErrors() || validate(user, model)) {
             return "registration";
         }
 
@@ -43,12 +40,12 @@ public class RegistrationController {
         return "login";
     }
 
-    private boolean checkUserAlreadyExists(@ModelAttribute @Valid UserDto user, Model model) {
-        boolean result = validator.notValid(user);
-        if (result) {
-            model.addAttribute("userAlreadyExists", USER_EXISTS_MSG);
+    private boolean validate(UserDto user, Model model) {
+        String result = validator.notValid(user);
+        if (result != null) {
+            model.addAttribute("commonError", result);
         }
-        return result;
+        return result != null;
     }
 
     private void initModel(Model model) {
