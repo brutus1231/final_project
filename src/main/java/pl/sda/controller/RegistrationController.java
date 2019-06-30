@@ -24,7 +24,7 @@ public class RegistrationController {
     private UserValidator validator;
 
     @GetMapping("/register")
-    public String registration(Model model) {
+    public String page(Model model) {
         initModel(model);
         return "registration";
     }
