@@ -1,10 +1,15 @@
 package pl.sda.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "USER")
+@Getter @Setter
 public class User {
 
     @Id
@@ -18,6 +23,27 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private String city;
+    @Column
+    private String address;
+
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date createDate;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status;
+
+    @Column
+    @Lob
+    private byte[] avatar;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private AccountType type;
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "user_role",
@@ -27,35 +53,4 @@ public class User {
 
     private List<Role> roles;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 }
