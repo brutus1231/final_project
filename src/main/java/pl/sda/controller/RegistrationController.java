@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
+    private static final String USER_REGISTRED_CORRECTLY = "Użytkownik zarejestrowany poprawnie";
     @Autowired
     private UserBoImpl userBo;
 
@@ -36,7 +37,7 @@ public class RegistrationController {
         }
 
         userBo.saveUser(user);
-
+        model.addAttribute("userRegisteredCorrectly", USER_REGISTRED_CORRECTLY);
         return "login";
     }
 
