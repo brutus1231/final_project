@@ -67,8 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable();
 
         http.logout()
+                .logoutSuccessUrl("/login")
                 .logoutUrl("/logout")
-                .deleteCookies("JSESSIONID")
         //  .logoutSuccessHandler(logoutSuccessHandler())
         ;
 
