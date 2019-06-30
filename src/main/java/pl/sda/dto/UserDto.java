@@ -25,8 +25,8 @@ public class UserDto implements Serializable {
         this.confirmedPassword = confirmedPassword;
     }
 
-    public UserDto(User user, String decryptedPassword) {
-        this(user.getUsername(), decryptedPassword, decryptedPassword);
+    public UserDto(User user) {
+        this.username = user.getUsername();
     }
 
     public String getUsername() {

@@ -38,7 +38,6 @@ public class UserBoImpl {
 
     public UserDto getUser(String username) {
         User user = userRepository.findByUsername(username).get();
-        String password = encoder.encode(user.getPassword());
-        return new UserDto(user, password);
+        return new UserDto(user);
     }
 }
