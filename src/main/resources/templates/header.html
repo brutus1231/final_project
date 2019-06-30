@@ -12,7 +12,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" th:href="@{/}">Strona główna</a>
             </div>
-            <div class="navbar-header">
+            <div class="navbar-header" sec:authorize="isAnonymous()">
                 <a class="navbar-brand" th:href="@{/register}">Registration</a>
             </div>
 
