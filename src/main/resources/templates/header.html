@@ -13,10 +13,11 @@
                 <a class="navbar-brand" th:href="@{/}">Strona główna</a>
             </div>
             <div class="navbar-header" sec:authorize="isAnonymous()">
-                <a class="navbar-brand" th:href="@{/register}">Registration</a>
+                <a class="navbar-brand" th:href="@{/register}">Rejestracja</a>
             </div>
 
             <div class="navbar-header" sec:authorize="isAuthenticated()">
+                <a class="navbar-brand" th:href="@{/userPanel}">Panel użytkownika</a>
                 <a class="navbar-brand" th:href="@{/logout}">Wyloguj</a>
             </div>
         </div>
