@@ -1,11 +1,19 @@
 package pl.sda.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+import pl.sda.model.AccountStatus;
+import pl.sda.model.AccountType;
 import pl.sda.model.User;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.Date;
 
+@Getter @Setter
 public class UserDto implements Serializable {
 
     @Email(message = "Zły format adresu email")
@@ -16,40 +24,25 @@ public class UserDto implements Serializable {
 
     private String confirmedPassword;
 
+    @NotBlank(message = "Pole nie może być puste")
+    private String city;
+    @NotBlank(message = "Pole nie może być puste")
+    private String address;
+
+    private Date createDate;
+    private AccountStatus status;
+    private byte[] avatar;
+    private AccountType type;
+
     public UserDto(){}
-    public UserDto(String username,
-                   String password,
-                   String confirmedPassword){
-        this.username = username;
-        this.password = password;
-        this.confirmedPassword = confirmedPassword;
-    }
 
     public UserDto(User user) {
         this.username = user.getUsername();
+        this.city = user.getCity();
+        this.address = user.getAddress();
+        this.avatar = user.getAvatar();
+        this.setType(user.getType());
+        this.setStatus(user.getStatus());
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmedPassword() {
-        return confirmedPassword;
-    }
-
-    public void setConfirmedPassword(String confirmedPassword) {
-        this.confirmedPassword = confirmedPassword;
-    }
 }

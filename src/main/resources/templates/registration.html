@@ -30,9 +30,13 @@
             <input id="confirmedPassword" type="password" th:field="*{confirmedPassword}" class="myTextButton third"
                    placeholder="confirm password"/>
             <div>
+            <input id="city" type="text" th:field="*{city}" class="myTextButton" placeholder="city"/>
+                <div class="error" th:errors="*{city}"></div>
+            <input id="address" type="text" th:field="*{address}" class="myTextButton" placeholder="address"/>
+                <div class="error" th:errors="*{address}"></div>
             <input type="button" value="Powrót" name="backButton"
                    onClick="javascript:window.location.href='/login'" class="myButton shortButton" >
-            <input type="submit" value="Zapisz" name="mySubmitButton saveButton">
+            <input type="submit" value="Zapisz" name="saveButton" class="mySubmitButton">
             </div>
         </form>
 

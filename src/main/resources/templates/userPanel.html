@@ -37,11 +37,23 @@
         </div>
         <div class="form-group">
             <div class="error" th:errors="*{confirmedPassword}"></div>
-            <label for="password">Confirmed password</label>
+            <label for="confirmedPassword">Confirmed password</label>
             <input type="password" class="form-control" id="confirmedPassword" th:field="*{confirmedPassword}"
                    placeholder="Confirmed password">
         </div>
-        <div class="fourth">
+        <div class="form-group">
+            <div class="error" th:errors="*{city}"></div>
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" th:field="*{city}"
+                   placeholder="City">
+        </div>
+        <div class="form-group">
+            <div class="error" th:errors="*{address}"></div>
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" th:field="*{address}"
+                   placeholder="Address">
+        </div>
+        <div class="form-group">
             <input type="button" value="Powrót" name="backButton"
                    onClick="javascript:window.location.href='/login'" class="myButton shortButton" >
             <input class = "mySubmitButton" type="submit" value="Zapisz" name="saveButton">

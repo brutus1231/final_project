@@ -26,11 +26,11 @@ public class UserPanelController {
     private UserValidator validator;
 
     @GetMapping("/userPanel")
-    public String page(@Valid @ModelAttribute(name = "user") UserDto user, Model model) {
+    public String page(@Valid @ModelAttribute(name = "user") UserDto user, BindingResult bindingResult, Model model) {
         String username;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
+            username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
