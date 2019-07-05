@@ -18,7 +18,8 @@ import javax.validation.Valid;
 @Controller
 public class UserPanelController {
 
-    private static final String USER_REGISTRED_CORRECTLY = "Użytkownik zarejestrowany poprawnie";
+    private static final String USER_MODIFIED_CORRECTLY = "Użytkownik zapisany poprawnie";
+
     @Autowired
     private UserBoImpl userBo;
 
@@ -35,7 +36,6 @@ public class UserPanelController {
             username = principal.toString();
         }
         model.addAttribute("user", userBo.getUser(username));
-
         return "userPanel";
     }
 
@@ -46,13 +46,13 @@ public class UserPanelController {
             return "userPanel";
         }
 
-        userBo.saveUser(user);
-        model.addAttribute("userRegisteredCorrectly", USER_REGISTRED_CORRECTLY);
+        userBo.updateUser(user);
+        model.addAttribute("usermodifiedCorrectly", USER_MODIFIED_CORRECTLY);
         return "userPanel";
     }
 
     private boolean validate(UserDto user, Model model) {
-        String result = validator.notValid(user);
+        String result = validator.notValid(user, false);
         if (result != null) {
             model.addAttribute("commonError", result);
         }

@@ -44,6 +44,14 @@ public class UserBoImpl {
         userRepository.save(user);
     }
 
+    public void updateUser(UserDto dto) {
+        User user = userRepository.findByUsername(dto.getUsername()).get();
+        user.setPassword(encoder.encode(dto.getPassword()));
+        user.setCity(dto.getCity());
+        user.setAddress(dto.getAddress());
+        userRepository.save(user);
+    }
+
     public UserDto getUser(String username) {
         User user = userRepository.findByUsername(username).get();
         return new UserDto(user);

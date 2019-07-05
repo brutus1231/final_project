@@ -18,6 +18,7 @@
 <p class="h2 text-center">Konto użytkownika</p>
 
 <div class="container ">
+    <p class="info" th:text="${usermodifiedCorrectly}"></p>
     <form th:action="@{/saveUserPanel}" th:object="${user}" method="post">
 
         <p class="error" th:text="${commonError}"></p>
@@ -31,7 +32,7 @@
         <div class="form-group">
             <div class="error" th:errors="*{password}"></div>
             <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" th:field="*{password}" placeholder="Password"
+            <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Password"
                    aria-describedby="pass1">
             <small id="pass1" class="form-text text-muted">Your unique account login.</small>
         </div>
