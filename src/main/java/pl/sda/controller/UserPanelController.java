@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.sda.bussiness.UserBoImpl;
 import pl.sda.bussiness.UserValidator;
 import pl.sda.dto.UserDto;
+import pl.sda.util.AuthorizationUtil;
 
 import javax.validation.Valid;
 
@@ -22,22 +23,19 @@ public class UserPanelController {
 
     @Autowired
     private UserBoImpl userBo;
-
     @Autowired
     private UserValidator validator;
+    @Autowired
+    private AuthorizationUtil authorizationUtil;
 
     @GetMapping("/userPanel")
     public String page(@Valid @ModelAttribute(name = "user") UserDto user, BindingResult bindingResult, Model model) {
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
+        String username = authorizationUtil.getUsername();
         model.addAttribute("user", userBo.getUser(username));
         return "userPanel";
     }
+
+
 
     @PostMapping("/saveUserPanel")
     public String saveUser(@Valid @ModelAttribute(name = "user") UserDto user, BindingResult bindingResult,

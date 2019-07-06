@@ -31,6 +31,9 @@ public class Auction {
     @ManyToOne
     private Category category;
 
+    @ManyToOne
+    private User user;
+
     @Column(name =  "MINIMUM_AMOUNT", precision = 8, scale = 2)
     private BigDecimal minimumAmount;
 
