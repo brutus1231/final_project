@@ -21,6 +21,8 @@ public class AuctionBoImpl {
     private CategoryRepository categoryRepository;
     @Autowired
     private AuctionAssembler auctionAssembler;
+    @Autowired
+    private UserBoImpl userBo;
 
     public void saveAuction(AuctionDto dto) throws IOException {
         Auction auction = new Auction();
@@ -33,6 +35,7 @@ public class AuctionBoImpl {
         auction.setCreationDate(new Date());
         auction.setEndDate(dto.getEndDate());
         auction.setCategory(categoryRepository.getOne(dto.getCategoryId()));
+        auction.setUser(userBo.getCurrentUser());
         auctionRepository.save(auction);
     }
 
@@ -49,7 +52,6 @@ public class AuctionBoImpl {
     public List<AuctionDto> findAll() {
         return auctionAssembler.toDtos(auctionRepository.findAll());
     }
-
 
     public List<AuctionDto> findByUsername(String username) {
         return auctionAssembler.toDtos(auctionRepository.findByUsername(username));

@@ -10,6 +10,7 @@ import pl.sda.model.Role;
 import pl.sda.model.User;
 import pl.sda.repository.RoleRepository;
 import pl.sda.repository.UserRepository;
+import pl.sda.util.AuthorizationUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +28,9 @@ public class UserBoImpl {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private AuthorizationUtil authorizationUtil;
 
     public void saveUser(UserDto dto) {
         User user = new User();
@@ -55,5 +59,9 @@ public class UserBoImpl {
     public UserDto getUser(String username) {
         User user = userRepository.findByUsername(username).get();
         return new UserDto(user);
+    }
+
+    public User getCurrentUser() {
+        return userRepository.findByUsername(authorizationUtil.getUsername()).get();
     }
 }

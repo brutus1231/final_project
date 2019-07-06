@@ -15,7 +15,18 @@
 <body>
 
 <div th:replace="header :: header"/>
-index.html
+<p class="h2 text-center">Moje ostatnie aukcje</p>
+<br />
+
+<th:block th:each="userAuction : ${userAuctions}">
+    <tr>
+        <td th:text="${userAuction.id}">Identyfikator</td>
+        <td th:text="${userAuction.title}">Tytuł</td>
+        <td th:text="${userAuction.description}">Opis</td>
+        <td th:text="${userAuction.minimumAmount}">Cena minimalna</td>
+        <td th:text="${userAuction.buyNowAmount}">Kup teraz</td>
+    </tr>
+</th:block>
 
 </body>
 </html>
