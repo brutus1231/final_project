@@ -14,34 +14,23 @@
 
 <body>
 <div th:replace="header :: header"/>
-<div class="mt-50"></div>
-<div class="wrapper">
+<p class="h2 text-center">Wystaw przedmiot</p>
 
-    <div id="formContent">
-        <div class="registrationTitle" >Rejestracja</div>
-
-        <form th:action="@{/register}" th:object="${user}" method="post">
-
-            <p class="error" th:text="${commonError}"></p>
-            <input id="username" type="text" th:field="*{username}" class="myTextButton" placeholder="email"/>
-            <div class="error" th:errors="*{username}"></div>
-            <input id="password" type="password" th:field="*{password}" class="myPasswordButton"
-                   placeholder="hasło"/>
-            <div class="error" th:errors="*{password}"></div>
-            <input id="confirmedPassword" type="password" th:field="*{confirmedPassword}" class="myTextButton third"
-                   placeholder="powtórz hasło"/>
-            <div>
-            <input id="city" type="text" th:field="*{city}" class="myTextButton" placeholder="miasto"/>
-                <div class="error" th:errors="*{city}"></div>
-            <input id="address" type="text" th:field="*{address}" class="myTextButton" placeholder="adres"/>
-                <div class="error" th:errors="*{address}"></div>
+<div class="container ">
+    <form th:action="@{/saveAuction}" th:object="${auction}" method="post">
+        <div class="form-group">
+            <div class="error" th:errors="*{title}"></div>
+            <label for="title">Tytuł</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}" aria-describedby="titleHelp"
+                   placeholder="Wpisz tytuł">
+            <small id="titleHelp" class="form-text text-muted">Tytuł przedmiotu</small>
+        </div>
+        <div class="form-group">
             <input type="button" value="Powrót" name="backButton"
                    onClick="javascript:window.location.href='/login'" class="myButton shortButton" >
-            <input type="submit" value="Zapisz" name="saveButton" class="mySubmitButton">
-            </div>
-        </form>
-
-    </div>
+            <input class = "mySubmitButton" type="submit" value="Zapisz" name="saveButton">
+        </div>
+    </form>
 </div>
 
 </body>

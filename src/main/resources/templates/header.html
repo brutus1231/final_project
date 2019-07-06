@@ -8,7 +8,7 @@
 <body>
 <div th:fragment="header">
     <nav class="navbar navbar-inverse">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" th:href="@{/}">Strona główna</a>
             </div>
@@ -18,8 +18,10 @@
 
             <div class="navbar-header" sec:authorize="isAuthenticated()">
                 <a class="navbar-brand" th:href="@{/userPanel}">Panel użytkownika</a>
+                <a class="navbar-brand" th:href="@{/auction}">Wystaw przedmiot</a>
                 <a class="navbar-brand" th:href="@{/logout}">Wyloguj</a>
             </div>
+            <div style="float:both"></div>
         </div>
     </nav>
 </div>

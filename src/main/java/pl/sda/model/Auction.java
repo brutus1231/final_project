@@ -19,7 +19,7 @@ public class Auction {
     private Long id;
 
     @Column(length = 100)
-    private String tittle;
+    private String title;
 
     @Column(length = 300)
     private String description;

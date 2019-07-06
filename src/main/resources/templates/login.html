@@ -19,11 +19,11 @@
     <p class="info" th:text="${userRegisteredCorrectly}"></p>
     <p class="alert alert-danger" th:if="${param.error}" th:text="'Podany login lub hasło są nieprawidłowe'"></p>
     <div id="formContent">
-        <div class="loginTitle" >Login</div>
+        <div class="loginTitle" >Logowanie</div>
         <form action="/appLogin" method="post">
             <input type="text" id="username" class="myTextButton first" name="username" placeholder="email">
-            <input type="password" id="pass" class="myPasswordButton second" name="pass" placeholder="password">
-            <input type="submit" value="Log In" class="mySubmitButton">
+            <input type="password" id="pass" class="myPasswordButton second" name="pass" placeholder="hasło">
+            <input type="submit" value="Zaloguj" class="mySubmitButton">
         </form>
     </div>
 </div>

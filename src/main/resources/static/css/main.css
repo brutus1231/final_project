@@ -110,7 +110,7 @@ a {
   border-radius: 5px 5px 5px 5px;
 }
 
-.myTextButton, .myPasswordButton:focus {
+.myTextButton:focus, .myPasswordButton:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
@@ -257,4 +257,8 @@ footer{
 
 .container{
     width:40%;
+}
+
+.mt-50{
+    margin-top:5%;
 }
