@@ -7,6 +7,7 @@ import pl.sda.model.Auction;
 import pl.sda.repository.AuctionRepository;
 import pl.sda.repository.CategoryRepository;
 
+import java.io.IOException;
 import java.util.Date;
 
 @Service
@@ -18,12 +19,12 @@ public class AuctionBoImpl {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public void saveAuction(AuctionDto dto) {
+    public void saveAuction(AuctionDto dto) throws IOException {
         Auction auction = new Auction();
         auction.setId(dto.getId());
         auction.setTitle(dto.getTitle());
         auction.setDescription(dto.getDescription());
-        auction.setPicture(dto.getPicture());
+        auction.setPicture(dto.getPicture().getBytes());
         auction.setMinimumAmount(dto.getMinimumAmount());
         auction.setBuyNowAmount(dto.getBuyNowAmount());
         auction.setCreationDate(new Date());

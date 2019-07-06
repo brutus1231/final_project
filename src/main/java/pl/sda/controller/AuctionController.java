@@ -12,6 +12,7 @@ import pl.sda.bussiness.CategoryBoImpl;
 import pl.sda.dto.AuctionDto;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 public class AuctionController {
@@ -33,7 +34,7 @@ public class AuctionController {
 
     @PostMapping("/saveAuction")
     public String saveAuction(@Valid @ModelAttribute(name = "auction") AuctionDto auction, BindingResult bindingResult,
-                           Model model) {
+                           Model model) throws IOException {
         if (bindingResult.hasErrors()) {
             return "auction";
         }

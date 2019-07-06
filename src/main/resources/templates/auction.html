@@ -10,6 +10,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css\main.css" type="text/css" />
     <div th:replace="header :: header-css"/>
+    <script>
+$(document).on('ready', function() {
+    $("#input-b5").fileinput({showCaption: false, dropZoneEnabled: false});
+});
+</script>
 </head>
 
 <body>
@@ -17,7 +22,7 @@
 <p class="h2 text-center">Wystaw przedmiot</p>
 
 <div class="container ">
-    <form th:action="@{/saveAuction}" th:object="${auction}" method="post">
+    <form th:action="@{/saveAuction}" th:object="${auction}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <div class="error" th:errors="*{title}"></div>
             <label for="title">Tytuł</label>
@@ -42,6 +47,12 @@
                         th:text="${category.name}"></option>
             </select>
             <small id="categoriesHelp" class="form-text text-muted">Kategoria przedmiotu</small>
+        </div>
+
+        <div class="form-group" >
+            <label for="description">Zdjęcie</label>
+            <input type="file" class="form-control" id="picture" th:field="*{picture}" aria-describedby="pictureHelp"
+                   placeholder="Podaj zdjęcie" style="box-sizing: content-box;">
         </div>
 
         <div class="form-group">

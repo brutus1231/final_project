@@ -2,6 +2,7 @@ package pl.sda.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 import pl.sda.model.Category;
 
 import java.math.BigDecimal;
@@ -13,7 +14,7 @@ public class AuctionDto {
     private Long id;
     private String title;
     private String description;
-    private byte[] picture;
+    private MultipartFile picture;
     private Long categoryId;
     private BigDecimal minimumAmount;
     private BigDecimal buyNowAmount;
