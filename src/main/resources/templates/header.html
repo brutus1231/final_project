@@ -19,6 +19,7 @@
             <div class="navbar-header" sec:authorize="isAuthenticated()">
                 <a class="navbar-brand" th:href="@{/userPanel}">Panel użytkownika</a>
                 <a class="navbar-brand" th:href="@{/auction}">Wystaw przedmiot</a>
+                <span  th:text="${#authentication.name}"></span>
                 <a class="navbar-brand" th:href="@{/logout}">Wyloguj</a>
             </div>
             <div style="float:both"></div>

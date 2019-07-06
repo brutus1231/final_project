@@ -14,7 +14,7 @@ public class AuctionDto {
     private String title;
     private String description;
     private byte[] picture;
-    private Category category;
+    private Long categoryId;
     private BigDecimal minimumAmount;
     private BigDecimal buyNowAmount;
     private boolean isPromoted;
